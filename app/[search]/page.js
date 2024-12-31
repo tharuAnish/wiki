@@ -58,13 +58,14 @@ export default async function page({ params }) {
   const wikiData = GetWikiResult(searchTerm)
   const data = await wikiData
   const result = data?.query?.pages
+  const displayTerm = searchTerm.replaceAll("%20", " ")
   console.log(result)
 
   return (
     <div className="py-4">
       <div className="bg-stone-50 shadow-md rounded-xl p-6">
         <h2 className="text-xl font-semibold  mb-6 opacity-60">
-          Search Results for: "<span className="italic">{searchTerm}</span>"
+          Search Results for: "<span className="italic">{displayTerm}</span>"
         </h2>
         <div className="space-y-4">
           {result ? (
